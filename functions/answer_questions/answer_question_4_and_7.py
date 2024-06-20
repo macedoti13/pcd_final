@@ -37,4 +37,4 @@ def forecast_next_24_hours_output_flow_rate(year, month, day, hour, save_df=True
     
     if not save_df:
         return merged_df
-    merged_df.to_parquet(os.path.join(os.path.dirname(__file__),"../../data/gold/question_4_and_7_gold.parquet"))
+    merged_df.to_parquet(os.path.join(os.path.dirname(__file__),"../../data/gold/question_4_and_7_answer.parquet"))
