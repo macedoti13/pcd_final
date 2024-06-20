@@ -1,7 +1,9 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '')))
 from utils import non_weather_training_columns_list, with_weather_training_columns_list
 import pandas as pd
 import pickle
-import os
     
 def forecast_next_24_hours_output_flow_rate(year, month, day, hour, save_df=True):
     
