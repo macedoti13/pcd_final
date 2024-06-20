@@ -3,8 +3,9 @@ import pandas as pd
 import pickle
 
 
-def forecast_next_24_hours_output_flow_rate(input_df, year, month, day, hour):
+def forecast_next_24_hours_output_flow_rate(year, month, day, hour):
     
+    input_df = pd.read_parquet("../../data/silver/training_dataset.parquet")
     timestamp = pd.Timestamp(year=year, month=month, day=day, hour=hour)
     input_df = input_df[input_df["timestamp"] == timestamp]
     
@@ -33,6 +34,4 @@ def forecast_next_24_hours_output_flow_rate(input_df, year, month, day, hour):
     predictions = pd.DataFrame(predictions)
     weather_predictions = pd.DataFrame(weather_predictions)
     merged_df = pd.merge(predictions, weather_predictions, on='timestamp')
-        
-    
-    return merged_df
+    merged_df.to_parquet("../../data/gold/question_4_and_7_gold.parquet")
