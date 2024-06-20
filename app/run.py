@@ -68,6 +68,7 @@ def forecasting_plots():
         # generate the data from the user input
         output_flow_prediction_dataset = forecast_next_24_hours_output_flow_rate(year, month, day, hour, save_df=False)
         simulation_dataset = simulate_empyting_reservoir(year, month, day, hour, return_df=True)
+        print(simulation_dataset)
         
         # forecast the next 24 hours output flow rate and simulate the emptying of the reservoir
         question_4_and_7_plot_1 = create_questions_4_and_7_plot_1(output_flow_prediction_dataset)
