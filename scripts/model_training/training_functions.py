@@ -8,10 +8,6 @@ from utils import non_weather_training_columns_list, with_weather_training_colum
 
 
 def create_training_samples(df, with_weather, target):
-    
-    targets = []
-    for i in range(1, 25):
-        targets.append(f"target_{i}")
         
     if with_weather:
         X = np.array(df[with_weather_training_columns_list])
@@ -36,14 +32,14 @@ def set_model_training_pipeline():
         estimator=model,
         param_distributions=params,
         scoring="neg_mean_absolute_error",
-        n_iter=50,  
+        n_iter=80,  
         cv=3,  
         n_jobs=-1,
         verbose=2,
         random_state=42
     )
     return XGBRegressor(n_estimators=100, max_depth=1, learning_rate=0.01)
-
+    # return clf
 
 def train_model(model, X_train, y_train, X_test, y_test):
     model.fit(X_train, y_train, eval_set=[(X_train, y_train), (X_test, y_test)], verbose=100)
