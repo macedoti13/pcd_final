@@ -9,5 +9,6 @@ def create_questions_4_and_7_plot_1(input_df):
     fig.add_trace(go.Scatter(x=real_data.timestamp, y=real_data.forecasted_output_flow_rate, mode='lines+markers', name='Ultimas 24 horas', line=dict(color='blue')))
     fig.add_trace(go.Scatter(x=forecasted_data.timestamp, y=forecasted_data.forecasted_output_flow_rate, mode='lines+markers', name='Previsao Proximas 24 horas sem dados meterologicos', line=dict(color='red')))
     fig.add_trace(go.Scatter(x=forecasted_data.timestamp, y=forecasted_data.weather_forecasted_output_flow_rate, mode='lines+markers', name='Previsao Proximas 24 horas com dados meterologicos', line=dict(color='green')))
+    fig.update_layout(title={'text': 'Previsao da Saida de Agua', 'x': 0.5, 'xanchor': 'center'}, xaxis_title='Horario', yaxis_title='Saida de Agua (L/s)', legend_title='Type')
     plot_html = fig.to_html(full_html=False)
     return plot_html
