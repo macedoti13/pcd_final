@@ -19,7 +19,7 @@ def forecast_next_24_hours_output_flow_rate(year, month, day, hour, save_df=True
     for i in range(1, 25):
         new_prediction = {}
         next_timestamp = timestamp + pd.Timedelta(hours=i)
-        model = pickle.load(open(os.path.join(os.path.dirname(__file__),f"../../models/xgb_{i}h.pkl", "rb")))
+        model = pickle.load(open(f"models/xgb_{i}h.pkl", "rb"))
         new_prediction['timestamp'] = next_timestamp
         new_prediction['forecasted_output_flow_rate'] = round(float(model.predict(X)[0]), 2)
         predictions.append(new_prediction)
@@ -29,7 +29,7 @@ def forecast_next_24_hours_output_flow_rate(year, month, day, hour, save_df=True
     for i in range(1, 25):
         new_prediction = {}
         next_timestamp = timestamp + pd.Timedelta(hours=i)
-        model = pickle.load(open(os.path.join(os.path.dirname(__file__),f"../../models/xgb_with_weather_{i}h.pkl", "rb")))
+        model = pickle.load(open(f"models/xgb_with_weather_{i}h.pkl", "rb"))
         new_prediction['timestamp'] = next_timestamp
         new_prediction['weather_forecasted_output_flow_rate'] = round(float(model.predict(X_weather)[0]), 2)
         weather_predictions.append(new_prediction)

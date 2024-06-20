@@ -59,10 +59,11 @@ def forecasting_plots():
     
     # wait user input
     if request.method == "POST":
-        year = request.form['year']
-        month = request.form['month']
-        day = request.form['day']
-        hour = request.form['hour']
+        year = int(request.form['year'])
+        month = int(request.form['month'])
+        day = int(request.form['day'])
+        hour = int(request.form['hour'])
+        minute = int(request.form['minute'])
         
         # generate the data from the user input
         output_flow_prediction_dataset = forecast_next_24_hours_output_flow_rate(year, month, day, hour, save_df=False)
